@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="10dp"
+    android:layout_margin="10dp">
+
+    <RelativeLayout
+        android:layout_width="190dp"
+        android:layout_height="match_parent"
+        android:background="@color/werty">
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="190dp"
+            android:layout_height="200dp"
+            android:padding="10dp" />
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_below="@+id/image"
+            android:padding="3dp"
+            android:text="название"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/description"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_below="@+id/name"
+            android:padding="4dp"
+            android:text="описание"
+            android:textAlignment="textStart"
+            android:textColor="@color/_grey"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/weigh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/carbohydrates"
+            android:layout_marginStart="145dp"
+            android:layout_marginTop="6dp"
+            android:text="198"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/text_weigh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/carbohydrates"
+            android:layout_marginStart="1dp"
+            android:layout_marginEnd="3dp"
+            android:layout_marginTop="6dp"
+            android:layout_toEndOf="@+id/weigh"
+            android:text="гр"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+
+
+        <TextView
+            android:id="@+id/text_calories"
+            android:layout_width="49dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/description"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:text="колории:"
+            android:textColor="@color/_grey"
+            android:textSize="11sp" />
+
+        <TextView
+            android:id="@+id/calories"
+            android:layout_width="38dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/description"
+            android:layout_marginTop="5dp"
+            android:layout_toEndOf="@+id/text_calories"
+            android:text="4"
+            android:textColor="@color/_grey"
+            android:textSize="11sp" />
+
+        <TextView
+            android:id="@+id/text_protein"
+            android:layout_width="35dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/description"
+            android:layout_marginTop="5dp"
+            android:layout_toEndOf="@+id/calories"
+            android:text="белки:"
+            android:textColor="@color/_grey"
+            android:textSize="11sp" />
+
+        <TextView
+            android:id="@+id/protein"
+            android:layout_width="25dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/description"
+            android:layout_marginTop="5dp"
+            android:layout_toEndOf="@+id/text_protein"
+            android:text="51.4"
+            android:textColor="@color/_grey"
+            android:textSize="11sp" />
+
+        <TextView
+            android:id="@+id/text_fat"
+            android:layout_width="35dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text_calories"
+            android:layout_marginStart="5dp"
+            android:text="жиры:"
+            android:textColor="@color/_grey"
+            android:textSize="11sp" />
+
+        <TextView
+            android:id="@+id/fat"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text_calories"
+            android:layout_toEndOf="@+id/text_fat"
+            android:text="56.6"
+            android:textColor="@color/_grey"
+            android:textSize="11sp" />
+
+        <TextView
+            android:id="@+id/text_carbohydrates"
+            android:layout_width="54dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text_protein"
+            android:layout_toEndOf="@+id/fat"
+            android:text="углеводы:"
+            android:textColor="@color/_grey"
+            android:textSize="11sp" />
+
+        <TextView
+            android:id="@+id/carbohydrates"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text_calories"
+            android:layout_toEndOf="@+id/text_carbohydrates"
+            android:text="56.6"
+            android:textColor="@color/_grey"
+            android:textSize="10sp" />
+
+
+
+
+        <TextView
+            android:id="@+id/rublee"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_below="@+id/text_fat"
+            android:layout_marginStart="3dp"
+            android:layout_marginTop="25dp"
+            android:layout_toEndOf="@id/price"
+            android:text="p"
+            android:textColor="@color/green"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+
+        <TextView
+            android:id="@+id/price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text_fat"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginBottom="10dp"
+            android:text="143"
+            android:textColor="@color/green"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <CheckBox
+            android:id="@+id/checkbox"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_below="@+id/text_weigh"
+            android:layout_marginTop="5dp"
+            android:layout_alignParentRight="true"
+            android:button="@drawable/check_box" />
+
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

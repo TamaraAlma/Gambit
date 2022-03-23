@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">GAMBIT</string>
+    <string name="basket">КОРЗИНА</string>
+    <string name="buying">ПРИСТУПИТЬ К ПОКУПКАМ</string>
+    <string name="textt">Ваша корзина пока пуста, добавьте понравившееся блюдо.</string>
+    <string name="pusto">Ой,пусто!</string>
+    <string name="todo">TODO</string>
+</resources>
