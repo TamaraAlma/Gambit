@@ -50,13 +50,13 @@ public class SecondActivity extends AppCompatActivity {
             public void onResponse(@NonNull Call<ArrayList<Dish>> call,
                                    @NonNull Response<ArrayList<Dish>> response) {
                 dishes = response.body();
-                Adapter adapter = new Adapter(SecondActivity.this, dishes);
+                Adapter adapter = new Adapter(dishes);
                 recyclerView.setAdapter(adapter);
             }
 
             @Override
             public void onFailure(@NonNull Call<ArrayList<Dish>> call, @NonNull Throwable t) {
-                Log.d("TAG", "Response = " + t.toString());
+                Log.d("TAG", "Response = " + t.getMessage());
             }
         });
 

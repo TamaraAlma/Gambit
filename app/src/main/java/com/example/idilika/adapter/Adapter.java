@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -28,8 +29,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.DishViewHolder>{
         final static String SAVED_CHECKBOX = "saved_checkbox";
         final static String SHARED_PREFS = "shared_prefs";
 
-public Adapter(Context context,ArrayList<Dish> dishes){
-        this.context = context;
+public Adapter(ArrayList<Dish> dishes){
         this.dishes=dishes;}
 
         @NonNull
@@ -53,37 +53,42 @@ public Adapter(Context context,ArrayList<Dish> dishes){
                 holder.carbohydrates.setText(dish.getNutritionFacts().getCarbohydrates().toString());
                 Glide.with(context).load(dish.getImage()).apply(RequestOptions.centerCropTransform())
                         .into(holder.image);
+                if(dish.getId()==loadFav(SAVED_CHECKBOX)) {
+                        holder.checkBox.setChecked(dish.getId()==loadFav(SAVED_CHECKBOX));
+                }
+                else holder.checkBox.setChecked(dish.getId()==loadFav(SAVED_CHECKBOX));
 
-                holder.checkBox.setOnClickListener(new View.OnClickListener() {
+                holder.checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                         @Override
-                        public void onClick(View view) {
+                        public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                                 if (holder.checkBox.isChecked()) {
-                                holder.checkBox.setChecked(true);
-                                sharedPreferences = context.getSharedPreferences("favorite",
-                                                        Context.MODE_PRIVATE);
-                                SharedPreferences.Editor editor = sharedPreferences.edit();
-                                editor.putBoolean(SAVED_CHECKBOX,holder.checkBox.isChecked()).apply();
+                                        holder.checkBox.setChecked(true);
+                                        sharedPreferences = context.getSharedPreferences("favorite",
+                                                Context.MODE_PRIVATE);
+                                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                                        editor.putInt(SAVED_CHECKBOX,holder.checkBox.getId()).apply();
+                                        notifyDataSetChanged();
 
-                                loadFav(SAVED_CHECKBOX);
                                 } else {
                                         holder.checkBox.setChecked(false);
                                         removeFav(SAVED_CHECKBOX);
                                 }
                         }
                 });
+                loadFav(SAVED_CHECKBOX);
         }
 
-        public void removeFav(String key){
+        public void removeFav(String SAVED_CHECKBOX){
                 sharedPreferences = context.getSharedPreferences("favorite",
                         Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.remove(SAVED_CHECKBOX).apply();
         }
 
-        public boolean loadFav(String keSAVED ){
+        public int loadFav(String SAVED_CHECKBOX ){
                 sharedPreferences = context.getSharedPreferences("favorite",
                         Context.MODE_PRIVATE);
-                return sharedPreferences.getBoolean(SAVED_CHECKBOX, false);
+                return sharedPreferences.getInt(SAVED_CHECKBOX,0);
         }
 
 
@@ -100,7 +105,7 @@ public Adapter(Context context,ArrayList<Dish> dishes){
         }
 
         public static class DishViewHolder extends RecyclerView.ViewHolder{
-        TextView name, price, description;
+                TextView name, price, description;
         TextView weigh, fat,protein, calories, carbohydrates;
         ImageView image;
         CheckBox checkBox;
@@ -117,7 +122,6 @@ public Adapter(Context context,ArrayList<Dish> dishes){
                         calories = itemView.findViewById(R.id.calories);
                         carbohydrates = itemView.findViewById(R.id.carbohydrates);
                         checkBox = itemView.findViewById(R.id.checkbox);
-
                 }
 
         }
