@@ -29,7 +29,8 @@ public class Adapter extends RecyclerView.Adapter<Adapter.DishViewHolder>{
         final static String SAVED_CHECKBOX = "saved_checkbox";
         final static String SHARED_PREFS = "shared_prefs";
 
-public Adapter(ArrayList<Dish> dishes){
+public Adapter( Context context, ArrayList<Dish> dishes){
+        this.context=context;
         this.dishes=dishes;}
 
         @NonNull
@@ -57,7 +58,6 @@ public Adapter(ArrayList<Dish> dishes){
                         holder.checkBox.setChecked(dish.getId()==loadFav(SAVED_CHECKBOX));
                 }
                 else holder.checkBox.setChecked(dish.getId()==loadFav(SAVED_CHECKBOX));
-
                 holder.checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                         @Override
                         public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
@@ -90,7 +90,6 @@ public Adapter(ArrayList<Dish> dishes){
                         Context.MODE_PRIVATE);
                 return sharedPreferences.getInt(SAVED_CHECKBOX,0);
         }
-
 
 
         @Override

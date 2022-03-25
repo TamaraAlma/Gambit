@@ -50,7 +50,7 @@ public class SecondActivity extends AppCompatActivity {
             public void onResponse(@NonNull Call<ArrayList<Dish>> call,
                                    @NonNull Response<ArrayList<Dish>> response) {
                 dishes = response.body();
-                Adapter adapter = new Adapter(dishes);
+                Adapter adapter = new Adapter( SecondActivity.this, dishes);
                 recyclerView.setAdapter(adapter);
             }
 
